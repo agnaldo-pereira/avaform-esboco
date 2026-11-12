@@ -21,7 +21,10 @@ Todos os dados são fictícios. Não há autenticação, banco de dados ou conex
 Versão identificada: **12 de novembro de 2026**.
 
 - Página principal: https://agnaldo-pereira.github.io/avaform-esboco/
-- Versão identificada: https://agnaldo-pereira.github.io/avaform-esboco/qualificacao-2026-11-12/
+- Versão identificada atual, com logos e seleção de tema: https://agnaldo-pereira.github.io/avaform-esboco/qualificacao-2026-11-12-r2/
+- Primeira versão preservada: https://agnaldo-pereira.github.io/avaform-esboco/qualificacao-2026-11-12/
+
+O seletor de tema permite escolher Automático, Claro ou Escuro. A logo acompanha o tema e a preferência é mantida no navegador quando o armazenamento local está disponível. As logos foram fornecidas pelo pesquisador.
 
 Para citar o material na dissertação, prefira a versão identificada. Este repositório contém somente a demonstração; não contém o texto, as referências ou os dados da dissertação.
 
