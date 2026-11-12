@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-BR" data-avaform-public>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AvaForm — Plataforma de apoio à avaliação formativa. Ambiente demonstrativo com dados fictícios.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Minha área — AvaForm</title>
+<link rel="stylesheet" href="assets/avaform.css">
+<script src="assets/tema.js" defer></script>
+</head>
+<body>
+<div id="qualificacao-esboco">
+
+<header><div class="brand"><img id="q-logo" src="assets/logo-avaform-claro.webp" data-light-src="assets/logo-avaform-claro.webp" data-dark-src="assets/logo-avaform-escuro.webp" alt="AvaForm" width="2172" height="724"><span>Plataforma de apoio à avaliação formativa</span></div>
+<label class="theme-select">Tema<select id="q-theme"><option value="auto">Automático</option><option value="light">Claro</option><option value="dark">Escuro</option></select></label>
+<a class="profile-link" href="perfil.html" aria-label="Abrir perfil de demonstração do professor Agnaldo"><span class="avatar" aria-hidden="true">&#128100;</span><span>Bem-vindo(a) prof. Agnaldo.</span></a>
+<div class="context-selectors">
+<label class="context-switch">Escola<select id="q-active-school"></select></label>
+<label class="context-switch">Turma<select id="q-active-class"></select></label>
+<label class="context-switch">Disciplina<select id="q-active-subject"></select></label>
+</div></header>
+<div class="workspace">
+<nav role="tablist" aria-label="Etapas do trabalho docente">
+<a class="home-link" href="index.html">← Página inicial</a>
+<small>Cadastros</small>
+<button type="button" id="q-tab-8" role="tab" aria-controls="q-panel-8" aria-selected="false">Escolas</button>
+<button type="button" id="q-tab-9" role="tab" aria-controls="q-panel-9" aria-selected="false">Disciplinas</button>
+<button type="button" id="q-tab-5" role="tab" aria-controls="q-panel-5" aria-selected="true">Turmas</button>
+<button type="button" id="q-tab-6" role="tab" aria-controls="q-panel-6" aria-selected="false">Alunos</button>
+<small>Trabalho pedagógico</small>
+<button type="button" id="q-tab-0" role="tab" aria-controls="q-panel-0" aria-selected="false">1 · Planejar</button>
+<button type="button" id="q-tab-1" role="tab" aria-controls="q-panel-1" aria-selected="false">2 · Registrar</button>
+<button type="button" id="q-tab-2" role="tab" aria-controls="q-panel-2" aria-selected="false">3 · Interpretar</button>
+<button type="button" id="q-tab-3" role="tab" aria-controls="q-panel-3" aria-selected="false">4 · Elaborar feedback</button>
+<small>Consulta e acompanhamento</small>
+<button type="button" id="q-tab-7" role="tab" aria-controls="q-panel-7" aria-selected="false">Consultar registros</button>
+<button type="button" id="q-tab-4" role="tab" aria-controls="q-panel-4" aria-selected="false">Percurso de aprendizagem</button>
+<small id="q-nav-context">Turma exemplo · 6º ano<br>Matemática</small>
+</nav>
+<main>
+<section id="q-panel-8" role="tabpanel" aria-labelledby="q-tab-8" hidden>
+<div class="context">Cadastros / Escolas</div><h2>Minhas escolas</h2>
+<div class="toolbar"><span>Organize as escolas em que você atua.</span><button type="button" class="primary" data-open-form="q-school-form">+ Cadastrar escola</button></div>
+<form id="q-school-form" class="detail" hidden><h3>Nova escola</h3><div class="fields">
+<label class="full">Nome da escola<input id="q-school-name" required placeholder="Ex.: Escola exemplo Centro"></label></div>
+<div class="actions"><button type="submit" class="primary">Salvar escola</button><button type="button" data-close-form="q-school-form">Cancelar</button></div></form>
+<div id="q-school-list"></div>
+</section>
+<section id="q-panel-9" role="tabpanel" aria-labelledby="q-tab-9" hidden>
+<div class="context">Cadastros / Disciplinas</div><h2>Minhas disciplinas</h2>
+<div class="toolbar"><span>Cadastre uma vez e vincule às turmas em que você leciona.</span><button type="button" class="primary" data-open-form="q-subject-form">+ Cadastrar disciplina</button></div>
+<form id="q-subject-form" class="detail" hidden><h3>Nova disciplina</h3><div class="fields">
+<label class="full">Nome da disciplina<input id="q-subject-name" required placeholder="Ex.: História"></label></div>
+<div class="actions"><button type="submit" class="primary">Salvar disciplina</button><button type="button" data-close-form="q-subject-form">Cancelar</button></div></form>
+<div id="q-subject-list"></div>
+<form id="q-subject-link-form" class="detail"><h3>Vincular disciplina a uma turma</h3><div class="fields">
+<label>Disciplina cadastrada<select id="q-link-subject" required></select></label>
+<label>Escola e turma<select id="q-link-class" required></select></label></div>
+<button type="submit" class="primary">Vincular à turma</button></form>
+</section>
+<section id="q-panel-5" role="tabpanel" aria-labelledby="q-tab-5">
+<div class="context">Cadastros / Turmas</div><h2>Minhas turmas</h2>
+<div class="toolbar"><span>Cadastre uma turma e consulte seus alunos e registros.</span><button type="button" class="primary" data-open-form="q-class-form">+ Cadastrar turma</button></div>
+<form id="q-class-form" class="detail" hidden>
+<h3>Nova turma · cadastro de demonstração</h3><div class="fields">
+<label>Nome da turma<input id="q-class-name" required placeholder="Ex.: 6º ano C"></label>
+<label>Escola cadastrada<select id="q-class-school" required></select></label>
+<label>Ano / nível de ensino<input id="q-class-year" required placeholder="Ex.: 6º ano"></label>
+<label>Disciplinas em que você atua<select id="q-class-subject" multiple size="4" required></select><span class="fine">Selecione uma ou mais disciplinas cadastradas.</span></label></div>
+<div class="actions"><button class="primary" type="submit">Salvar turma</button><button type="button" data-close-form="q-class-form">Cancelar</button></div></form>
+<div id="q-class-list"></div>
+</section>
+<section id="q-panel-6" role="tabpanel" aria-labelledby="q-tab-6" hidden>
+<div class="context" data-class-context>Cadastros / Alunos</div><h2>Alunos da turma</h2>
+<div class="toolbar"><span id="q-student-count"></span><button type="button" class="primary" data-open-form="q-student-form">+ Cadastrar aluno</button></div>
+<form id="q-student-form" class="detail" hidden><h3>Novo aluno · cadastro de demonstração</h3><div class="fields">
+<label>Nome de exibição<input id="q-student-name" required placeholder="Use um nome fictício neste esboço"></label>
+<label>Identificador escolar · opcional<input id="q-student-code" placeholder="Ex.: EX-003"></label></div>
+<div class="actions"><button class="primary" type="submit">Salvar aluno nesta turma</button><button type="button" data-close-form="q-student-form">Cancelar</button></div></form>
+<div id="q-student-list"></div>
+</section>
+<section id="q-panel-7" role="tabpanel" aria-labelledby="q-tab-7" hidden>
+<div class="context" data-class-context>Consulta / Registros pedagógicos</div><h2>Consultar registros</h2>
+<p class="fine">Observações, interpretações, feedbacks e decisões vinculados ao aluno e à atividade.</p>
+<div class="fields">
+<label>Aluno<select id="q-filter-student"></select></label>
+<label>Atividade<select id="q-filter-activity"></select></label>
+<label>Período inicial<input type="date" id="q-filter-from"></label>
+<label>Período final<input type="date" id="q-filter-to"></label>
+</div>
+<div class="toolbar"><span id="q-record-count" role="status"></span><button type="button" class="primary" id="q-new-record">+ Novo registro</button></div>
+<div id="q-record-list"></div>
+<section class="detail" id="q-record-detail" hidden aria-label="Detalhes do registro selecionado">
+<h3 id="q-detail-title"></h3><div id="q-detail-content"></div>
+<div class="actions"><button type="button" id="q-edit-record">Abrir para revisar</button><button type="button" id="q-detail-history">Ver percurso deste aluno</button><button type="button" data-close-form="q-record-detail">Fechar detalhes</button></div>
+</section>
+</section>
+<section id="q-panel-0" role="tabpanel" aria-labelledby="q-tab-0" hidden>
+<div class="context" data-class-context></div><h2>Planejar a avaliação</h2><p>Defina o que observar e quais critérios orientarão a análise.</p>
+<div class="fields">
+<label>Nome da atividade<input id="q-plan-name" value="Comparação de frações"></label>
+<label>Instrumento<select><option>Resolução de problemas com justificativa</option><option>Observação durante atividade</option><option>Discussão em grupo</option></select></label>
+<label class="full">Objetivo de aprendizagem<textarea id="q-plan-objective">Comparar frações e explicar a estratégia utilizada.</textarea></label>
+<label class="full">Habilidade da BNCC<input id="q-plan-bncc" placeholder="Selecionar no catálogo da BNCC"></label>
+<label class="full">Critérios<textarea id="q-plan-criteria">• Compara as frações propostas.
+• Justifica a comparação com desenho ou argumento.
+• Revê a estratégia quando encontra uma inconsistência.</textarea></label>
+</div>
+<div class="actions"><button type="button" data-ai="plan">Solicitar ideias à IA · opcional</button><button type="button" class="primary" data-next="1">Salvar planejamento e registrar →</button></div>
+<div class="box" id="q-ai-plan" hidden><h3>Exemplo de sugestão · ainda não incorporada</h3><p>Propor a comparação de 1/2 e 1/3 com desenhos de inteiros do mesmo tamanho e pedir que o estudante explique sua escolha.</p><button type="button" data-status="Sugestão disponível para revisão do professor.">Revisar proposta</button></div>
+</section>
+<section id="q-panel-1" role="tabpanel" aria-labelledby="q-tab-1" hidden>
+<div class="context" data-class-context></div><h2>Registrar uma observação</h2><p>Relacione o registro à atividade e aos critérios planejados.</p>
+<div class="fields"><label>Estudante<select id="q-record-student"></select></label><label>Data do registro<input type="date" id="q-record-date" value="2026-11-12"></label><label class="full">Atividade vinculada<input id="q-record-activity" value="Comparação de frações" readonly></label>
+<label class="full">Observação do professor<textarea id="q-observation">Ao comparar 1/2 e 1/3, escolheu 1/3 e explicou: “3 é maior que 2”. Ainda não utilizou desenho para justificar.</textarea></label></div>
+<div class="box"><h3>Produção do estudante · anexo opcional</h3><p class="fine">Fotografia, arquivo ou registro textual. Nenhum arquivo será enviado.</p><label>Selecionar arquivo para demonstração<input type="file" id="q-attachment"></label><p id="q-attachment-label" class="fine">Sem anexo.</p></div>
+<div class="actions"><button type="button" class="primary" data-next="2">Salvar registro e interpretar →</button></div>
+</section>
+<section id="q-panel-2" role="tabpanel" aria-labelledby="q-tab-2" hidden>
+<div class="context" data-student-context></div><h2>Interpretar as evidências</h2>
+<div class="box"><h3>Registro consultado</h3><p id="q-observation-preview">Ao comparar 1/2 e 1/3, escolheu 1/3 e explicou: “3 é maior que 2”. Ainda não utilizou desenho para justificar.</p><p class="fine" id="q-criteria-preview"></p></div>
+<label>Interpretação do professor<textarea id="q-interpretation" placeholder="O que este registro permite compreender? O que ainda precisa ser observado?"></textarea></label>
+<div class="actions"><button type="button" data-ai="interpret">Solicitar apoio da IA · opcional</button><button type="button" class="primary" data-next="3">Salvar interpretação e elaborar feedback →</button></div>
+<div class="box" id="q-ai-interpret" hidden><h3>Sugestão ilustrativa da IA · aguarda revisão</h3><p>O argumento registrado sugere uma comparação dos denominadores como números naturais. Uma nova atividade com representações do mesmo inteiro pode ajudar a investigar a estratégia.</p><div class="actions"><button type="button" id="q-use-interpret">Usar como rascunho e editar</button><button type="button" data-dismiss="interpret">Descartar sugestão</button></div></div>
+</section>
+<section id="q-panel-3" role="tabpanel" aria-labelledby="q-tab-3" hidden>
+<div class="context" data-student-context></div><h2>Elaborar o feedback</h2><p>Prepare uma devolutiva ligada ao registro e aos próximos passos.</p>
+<div class="box"><h3>Contexto da devolutiva</h3><p id="q-objective-preview"></p><p id="q-feedback-evidence" class="fine"></p></div>
+<label>Feedback do professor<textarea id="q-feedback" placeholder="Escreva sua devolutiva ou revise uma sugestão da IA."></textarea></label>
+<div class="actions"><button type="button" data-ai="feedback">Solicitar rascunho à IA · opcional</button><button type="button" class="primary" data-next="4">Salvar feedback e ver percurso →</button></div>
+<div class="box" id="q-ai-feedback" hidden><h3>Rascunho ilustrativo da IA</h3><p>Você explicou sua escolha comparando os números 2 e 3. Agora desenhe dois retângulos iguais: divida um em duas partes iguais e o outro em três. Pinte uma parte de cada e compare. Sua resposta continua a mesma? Explique.</p><div class="actions"><button type="button" id="q-use-feedback">Usar como rascunho e editar</button><button type="button" data-dismiss="feedback">Descartar sugestão</button></div></div>
+</section>
+<section id="q-panel-4" role="tabpanel" aria-labelledby="q-tab-4" hidden>
+<div class="context" data-class-context></div><h2>Percurso de aprendizagem</h2>
+<p class="fine">Relacione as evidências de diferentes momentos e registre os próximos passos pedagógicos.</p>
+<label>Aluno<select id="q-history-student"></select></label>
+<section class="detail" aria-label="Comparação de momentos"><h3>Entre os momentos registrados</h3><div id="q-moments"></div>
+<label>Reflexão do professor sobre o percurso<textarea id="q-course-reflection" placeholder="O que mudou? Que dificuldades permanecem? Que outras evidências são necessárias?"></textarea></label>
+<div class="actions"><button type="button" id="q-save-reflection">Salvar reflexão sobre o percurso</button></div></section>
+<h3>Registros em sequência</h3>
+<div class="timeline" id="q-history-list"></div>
+<div class="detail" id="q-decision-editor">
+<h3>Decisão vinculada ao registro em revisão</h3><p id="q-decision-context" class="fine"></p>
+<label>Intervenção planejada<textarea id="q-decision">Retomar a comparação com desenhos de inteiros do mesmo tamanho e solicitar uma nova justificativa.</textarea></label>
+<div class="fields"><label>O que observar no próximo encontro?<textarea id="q-next-observation">Como o estudante relaciona a quantidade de partes ao tamanho de cada parte.</textarea></label><label>Próxima atividade<input id="q-next-activity" value="Nova comparação com representação visual"></label></div>
+<div class="actions"><button type="button" id="q-save-decision" class="primary">Salvar decisão no registro</button></div></div>
+<div class="actions"><button type="button" id="q-history-new">+ Nova evidência deste aluno</button><button type="button" data-next="7">Consultar todos os registros</button></div>
+</section>
+</main></div>
+<footer><span id="q-status" role="status" aria-live="polite">Demonstração com dados fictícios · registros mantidos nesta aba</span><span>Cadastros → planejamento → registros → percurso</span></footer>
+<script>
+(function(){
+const root=document.getElementById('qualificacao-esboco');
+const $=id=>root.querySelector('#'+id);
+const status=$('q-status');
+const classes=[{id:'c1',name:'6º ano A',school:'Escola exemplo Norte',year:'6º ano',subjects:['Matemática','Ciências']},{id:'c2',name:'6º ano B',school:'Escola exemplo Norte',year:'6º ano',subjects:['Matemática']},{id:'c3',name:'6º ano A',school:'Escola exemplo Sul',year:'6º ano',subjects:['Ciências','Matemática']}];
+const schools=[...new Set(classes.map(c=>c.school))];
+const subjects=[...new Set(classes.flatMap(c=>c.subjects))];
+const sameName=(a,b)=>a.localeCompare(b,undefined,{sensitivity:'base'})===0;
+const students=[{id:'s1',classId:'c1',name:'Estudante A · fictício',code:'EX-001'},{id:'s2',classId:'c1',name:'Estudante B · fictício',code:'EX-002'},{id:'s3',classId:'c2',name:'Estudante C · fictício',code:'EX-003'}];
+const plan={activity:'Comparação de frações',objective:'Comparar frações e explicar a estratégia utilizada.',criteria:'Compara as frações; justifica a estratégia; revê inconsistências.',bncc:''};
+const records=[
+{...plan,id:'r1',classId:'c1',studentId:'s1',date:'2026-11-05',observation:'Ao comparar 1/2 e 1/3, escolheu 1/3 porque 3 é maior que 2.',interpretation:'A justificativa sugere comparação dos denominadores como números naturais. É necessário investigar essa hipótese.',feedback:'Desenhe dois retângulos iguais, divididos em duas e em três partes. Pinte uma parte de cada e explique sua comparação.',decision:'Retomar o problema com representações visuais.',nextObservation:'Observar a relação entre número de partes e tamanho de cada parte.',nextActivity:'Comparação com desenhos',attachment:'',origin:'Exemplo preenchido para demonstração'},
+{...plan,id:'r2',classId:'c1',studentId:'s1',date:'2026-11-12',observation:'Com desenhos de inteiros iguais, indicou 1/2 como maior que 1/3 e explicou que cada metade ocupa mais espaço.',interpretation:'Neste problema, a justificativa relaciona a comparação à representação. Ainda é preciso observar outras situações.',feedback:'Seu desenho ajudou a explicar a comparação. Como você compararia 1/4 e 1/2?',decision:'Propor outra comparação e pedir justificativa sem oferecer o desenho pronto.',nextObservation:'Verificar a estratégia em outro problema.',nextActivity:'Comparação de 1/4 e 1/2',attachment:'',origin:'Exemplo preenchido para demonstração'},
+{...plan,id:'r3',classId:'c1',studentId:'s2',date:'2026-11-05',observation:'Comparou corretamente 1/2 e 1/3 com um desenho, mas não explicou oralmente sua estratégia.',interpretation:'A representação é pertinente ao problema; é necessário ouvir a explicação.',feedback:'Conte como o desenho ajudou você a decidir.',decision:'Organizar uma conversa breve sobre a produção.',nextObservation:'Ouvir a justificativa do estudante.',nextActivity:'Explicação da estratégia',attachment:'',origin:'Exemplo preenchido para demonstração'}];
+records.forEach(r=>r.subject='Matemática');
+records.push({id:'r4',classId:'c1',subject:'Ciências',studentId:'s1',date:'2026-11-12',activity:'Observação de materiais',objective:'Descrever e comparar propriedades observáveis de materiais.',criteria:'Descreve propriedades e justifica o agrupamento.',bncc:'',observation:'Agrupou amostras pela aparência e descreveu diferenças de textura.',interpretation:'O registro permite retomar quais propriedades foram usadas no agrupamento.',feedback:'Que outra propriedade você poderia usar para organizar os materiais?',decision:'Solicitar outro agrupamento e comparar os critérios utilizados.',nextObservation:'Observar a justificativa da escolha das propriedades.',nextActivity:'Comparação de critérios de agrupamento',attachment:'',origin:'Exemplo preenchido para demonstração'});
+let activeSchool=classes[0].school,activeClass='c1',activeSubject='Matemática',currentId=null,detailId=null,attachmentName='',seq=10;
+const planningDrafts=new Map();
+const courseReflections=new Map();
+const sections={escolas:8,disciplinas:9,turmas:5,alunos:6,registros:7,planejar:0,registrar:1,interpretar:2,feedback:3,percurso:4};
+function saveDemoSession(){
+if(!document.documentElement.hasAttribute('data-avaform-public'))return;
+try{
+rememberPlanning();
+sessionStorage.setItem('avaform-demo-session',JSON.stringify({version:1,classes,schools,subjects,students,records,activeSchool,activeClass,activeSubject,currentId,attachmentName,seq,planning:[...planningDrafts],reflections:[...courseReflections],fields:['q-record-date','q-record-student','q-history-student','q-observation','q-interpretation','q-feedback','q-decision','q-next-observation','q-next-activity'].map(id=>[id,$(id).value])}));
+}catch{}
+}
+function loadDemoSession(){
+if(!document.documentElement.hasAttribute('data-avaform-public'))return null;
+try{
+const s=JSON.parse(sessionStorage.getItem('avaform-demo-session'));
+if(s?.version!==1||!['classes','schools','subjects','students','records','planning','reflections','fields'].every(k=>Array.isArray(s[k])))return null;
+classes.splice(0,classes.length,...s.classes);schools.splice(0,schools.length,...s.schools);subjects.splice(0,subjects.length,...s.subjects);students.splice(0,students.length,...s.students);records.splice(0,records.length,...s.records);
+activeSchool=s.activeSchool;activeClass=s.activeClass;activeSubject=s.activeSubject;currentId=s.currentId;attachmentName=s.attachmentName;seq=s.seq;
+planningDrafts.clear();s.planning.forEach(([k,v])=>planningDrafts.set(k,v));courseReflections.clear();s.reflections.forEach(([k,v])=>courseReflections.set(k,v));
+return s.fields;
+}catch{return null;}
+}
+planningDrafts.set('c1|Ciências',['Observação de materiais','Descrever e comparar propriedades observáveis de materiais.','Descreve propriedades e justifica o agrupamento.','']);
+const contextKey=()=>activeClass+'|'+activeSubject;
+const planningFields=['q-plan-name','q-plan-objective','q-plan-criteria','q-plan-bncc'];
+function rememberPlanning(){planningDrafts.set(contextKey(),planningFields.map(id=>$(id).value));}
+function restorePlanning(){const saved=planningDrafts.get(contextKey())||['','','',''];planningFields.forEach((id,i)=>$(id).value=saved[i]);}
+rememberPlanning();
+const selectedStudent=()=>$('q-record-student').value;
+const studentName=id=>students.find(s=>s.id===id)?.name||'Sem aluno selecionado';
+function text(tag,value){const e=document.createElement(tag);e.textContent=value;return e;}
+function button(label,fn){const b=text('button',label);b.type='button';b.className='cursor-interaction';b.addEventListener('click',fn);return b;}
+function fillSelect(id,items,blank){const e=$(id),old=e.value;e.replaceChildren();if(blank)e.add(new Option(blank,''));items.forEach(x=>e.add(new Option(x.name,x.id)));if([...e.options].some(o=>o.value===old))e.value=old;}
+function classStudents(){return students.filter(s=>s.classId===activeClass);}
+function refreshContext(){
+const c=classes.find(c=>c.id===activeClass);
+fillSelect('q-active-school',schools.map(s=>({id:s,name:s})));$('q-active-school').value=activeSchool;
+fillSelect('q-active-class',classes.filter(c=>c.school===activeSchool));$('q-active-class').value=activeClass;
+fillSelect('q-active-subject',(c?.subjects||[]).map(s=>({id:s,name:s})));$('q-active-subject').value=activeSubject;
+$('q-active-class').disabled=!c;$('q-active-subject').disabled=!c;
+fillSelect('q-class-school',schools.map(s=>({id:s,name:s})));$('q-class-school').value=activeSchool;
+const chosen=[...$('q-class-subject').selectedOptions].map(o=>o.value);
+$('q-class-subject').replaceChildren();subjects.forEach(s=>{const o=new Option(s,s);o.selected=chosen.includes(s);$('q-class-subject').add(o);});
+fillSelect('q-link-subject',subjects.map(s=>({id:s,name:s})));
+fillSelect('q-link-class',classes.map(c=>({id:c.id,name:c.school+' / '+c.name})));
+['q-tab-0','q-tab-1','q-tab-2','q-tab-3','q-tab-4','q-tab-6','q-new-record','q-history-new'].forEach(id=>$(id).disabled=!c);
+['q-record-student','q-history-student'].forEach(id=>fillSelect(id,classStudents()));
+fillSelect('q-filter-student',classStudents(),'Todos os alunos');
+root.querySelectorAll('[data-class-context]').forEach(e=>e.textContent=activeSchool+' / '+(c?.name||'Sem turma')+' / '+(activeSubject||'Sem disciplina'));
+$('q-nav-context').textContent=c?activeSchool+' · '+c.name+' · '+activeSubject:activeSchool+' · cadastre uma turma para iniciar';
+$('q-student-count').textContent=classStudents().length+' aluno(s) · cadastro comum às disciplinas da turma';
+refreshPreviews();renderSchools();renderSubjects();renderClasses();renderStudents();renderRecords();renderHistory();
+}
+function refreshPreviews(){
+$('q-record-activity').value=$('q-plan-name').value;
+$('q-observation-preview').textContent=$('q-observation').value;
+$('q-criteria-preview').textContent='Critérios: '+$('q-plan-criteria').value;
+$('q-objective-preview').textContent='Objetivo: '+$('q-plan-objective').value;
+$('q-feedback-evidence').textContent='Registro: '+$('q-observation').value;
+root.querySelectorAll('[data-student-context]').forEach(e=>e.textContent=studentName(selectedStudent())+' / '+$('q-plan-name').value);
+root.querySelectorAll('[data-ai]').forEach(b=>b.disabled=activeSubject!=='Matemática');
+root.querySelectorAll('[id^="q-ai-"]').forEach(e=>{if(activeSubject!=='Matemática')e.hidden=true;});
+}
+function show(n){
+if(document.documentElement.hasAttribute('data-avaform-public')){
+const section=Object.keys(sections).find(k=>sections[k]===n);
+if(section){const url=new URL(window.location.href);url.searchParams.set('secao',section);history.replaceState(null,'',url);}
+}
+root.querySelectorAll('[role="tab"]').forEach(b=>b.setAttribute('aria-selected',String(b.id==='q-tab-'+n)));
+root.querySelectorAll('[role="tabpanel"]').forEach(p=>p.hidden=p.id!=='q-panel-'+n);
+refreshPreviews();if(n===5)renderClasses();if(n===6)renderStudents();if(n===7)renderRecords();if(n===4)renderHistory();if(n===8)renderSchools();if(n===9)renderSubjects();
+}
+function row(title,subtitle,actions){const e=text('div','');e.className='list-item';const info=text('div','');info.append(text('strong',title),text('p',subtitle));const a=text('div','');a.className='actions';actions.forEach(x=>a.append(button(x[0],x[1])));e.append(info,a);return e;}
+function changeClass(id,subject){
+rememberPlanning();activeClass=id||'';const c=classes.find(c=>c.id===id);if(c)activeSchool=c.school;activeSubject=c?(c.subjects.includes(subject)?subject:(c.subjects.includes(activeSubject)?activeSubject:c.subjects[0])):'';restorePlanning();
+currentId=null;detailId=null;$('q-record-detail').hidden=true;$('q-filter-student').value='';$('q-filter-activity').value='';
+['q-observation','q-interpretation','q-feedback','q-decision','q-next-observation','q-next-activity'].forEach(id=>$(id).value='');
+attachmentName='';$('q-attachment').value='';$('q-attachment-label').textContent='Sem anexo.';refreshContext();
+status.textContent=c?'Contexto: '+activeSchool+' / '+c.name+' / '+activeSubject+'. Consulte os registros salvos neste contexto.':'Escola selecionada. Cadastre uma turma e vincule suas disciplinas para iniciar.';
+}
+function selectSchool(name){const c=classes.find(c=>c.school===name);if(c)changeClass(c.id);else{rememberPlanning();activeSchool=name;changeClass(null);}show(5);}
+function renderSchools(){
+const list=$('q-school-list');list.replaceChildren();
+schools.forEach(s=>list.append(row(s,classes.filter(c=>c.school===s).length+' turma(s) cadastrada(s)',[
+['Ver turmas',()=>selectSchool(s)],
+['Cadastrar turma',()=>{selectSchool(s);$('q-class-form').hidden=false;}]
+])));
+}
+function renderSubjects(){
+const list=$('q-subject-list');list.replaceChildren();
+subjects.forEach(s=>{const linked=classes.filter(c=>c.subjects.includes(s));list.append(row(s,linked.length?linked.map(c=>c.school+' / '+c.name).join(' · '):'Ainda não vinculada a uma turma',[
+['Vincular a uma turma',()=>{$('q-link-subject').value=s;$('q-link-class').focus();}]
+]));});
+$('q-subject-link-form').hidden=!classes.length;
+}
+function renderClasses(){
+const list=$('q-class-list');list.replaceChildren();
+classes.filter(c=>c.school===activeSchool).forEach(c=>{const count=students.filter(s=>s.classId===c.id).length;list.append(row(c.name,c.school+' · '+c.subjects.join(', ')+' · '+count+' aluno(s)',[
+['Ver alunos',()=>{changeClass(c.id);show(6);}],
+['Ver registros',()=>{changeClass(c.id);show(7);}],
+['Planejar',()=>{changeClass(c.id);show(0);}]
+]));});
+if(!list.children.length)list.append(text('p','Esta escola ainda não possui turmas. Use Cadastrar turma para iniciar.'));
+}
+function renderStudents(){
+const list=$('q-student-list');list.replaceChildren();$('q-student-count').textContent=classStudents().length+' aluno(s) · cadastro comum às disciplinas da turma';
+classStudents().forEach(s=>list.append(row(s.name,s.code||'Sem identificador',[
+['Ver registros',()=>{$('q-filter-student').value=s.id;show(7);}],
+['Ver percurso',()=>{$('q-history-student').value=s.id;show(4);}],
+['Novo registro',()=>newRecord(s.id)]
+])));
+if(!classStudents().length)list.append(text('p','Nenhum aluno cadastrado nesta turma.'));
+}
+function renderRecords(){
+const own=records.filter(r=>r.classId===activeClass&&r.subject===activeSubject);
+fillSelect('q-filter-activity',[...new Set(own.map(r=>r.activity))].map(a=>({id:a,name:a})),'Todas as atividades');
+const sid=$('q-filter-student').value,activity=$('q-filter-activity').value,from=$('q-filter-from').value,to=$('q-filter-to').value;
+const filtered=own.filter(r=>(!sid||r.studentId===sid)&&(!activity||r.activity===activity)&&(!from||r.date>=from)&&(!to||r.date<=to)).sort((a,b)=>b.date.localeCompare(a.date));
+$('q-record-count').textContent=filtered.length+' registro(s) encontrado(s)';
+const list=$('q-record-list');list.replaceChildren();
+filtered.forEach(r=>list.append(row(studentName(r.studentId),r.date.split('-').reverse().join('/')+' · '+r.activity+' · '+(r.feedback?'Com feedback':'Feedback a elaborar'),[['Abrir registro',()=>openDetail(r.id)]])));
+if(!filtered.length)list.append(text('p','Nenhum registro para os filtros selecionados.'));
+}
+function openDetail(id){
+detailId=id;const r=records.find(r=>r.id===id);$('q-detail-title').textContent=studentName(r.studentId)+' · '+r.date.split('-').reverse().join('/');
+const d=$('q-detail-content');d.replaceChildren();
+[['Escola',classes.find(c=>c.id===r.classId).school],['Turma',classes.find(c=>c.id===r.classId).name],['Disciplina',r.subject],['Atividade',r.activity],['Objetivo',r.objective],['Critérios',r.criteria],['BNCC',r.bncc||'Não selecionada neste esboço'],['Observação',r.observation],['Interpretação docente',r.interpretation],['Feedback',r.feedback],['Decisão pedagógica',r.decision],['Próxima observação',r.nextObservation],['Próxima atividade',r.nextActivity],['Anexo',r.attachment||'Sem anexo'],['Origem',r.origin]].forEach(([k,v])=>d.append(text('h3',k),text('p',v||'Ainda não registrado.')));
+$('q-record-detail').hidden=false;
+}
+function loadRecord(id,view=1){
+const r=records.find(r=>r.id===id);if(r.classId!==activeClass||r.subject!==activeSubject)changeClass(r.classId,r.subject);currentId=id;
+$('q-record-student').value=r.studentId;$('q-history-student').value=r.studentId;
+[['q-record-date',r.date],['q-plan-name',r.activity],['q-plan-objective',r.objective],['q-plan-criteria',r.criteria],['q-plan-bncc',r.bncc],['q-observation',r.observation],['q-interpretation',r.interpretation],['q-feedback',r.feedback],['q-decision',r.decision],['q-next-observation',r.nextObservation],['q-next-activity',r.nextActivity]].forEach(([id,v])=>$(id).value=v||'');
+attachmentName=r.attachment||'';$('q-attachment-label').textContent=attachmentName||'Sem anexo.';show(view);
+}
+function saveRecord(){
+if(!activeClass||!activeSubject){status.textContent='Selecione escola, turma e disciplina antes de salvar.';return false;}
+if(!selectedStudent()){status.textContent='Cadastre e selecione um aluno antes de salvar o registro.';return false;}
+if(!$('q-observation').value.trim()||!$('q-record-date').value||!$('q-plan-name').value.trim()){status.textContent='Informe atividade, data e observação para salvar.';return false;}
+let r=records.find(r=>r.id===currentId);if(!r){r={id:'r'+(++seq)};records.push(r);currentId=r.id;}
+Object.assign(r,{classId:activeClass,subject:activeSubject,studentId:selectedStudent(),date:$('q-record-date').value,activity:$('q-plan-name').value,objective:$('q-plan-objective').value,criteria:$('q-plan-criteria').value,bncc:$('q-plan-bncc').value,observation:$('q-observation').value,interpretation:$('q-interpretation').value,feedback:$('q-feedback').value,decision:$('q-decision').value,nextObservation:$('q-next-observation').value,nextActivity:$('q-next-activity').value,attachment:attachmentName,origin:'Salvo nesta demonstração · não persistente'});
+$('q-history-student').value=r.studentId;status.textContent='Registro salvo nesta demonstração. Consulte em Consultar registros ou no histórico do aluno.';return true;
+}
+function newRecord(sid){
+currentId=null;if(sid)$('q-record-student').value=sid;
+['q-observation','q-interpretation','q-feedback','q-decision','q-next-observation','q-next-activity'].forEach(id=>$(id).value='');attachmentName='';$('q-attachment').value='';$('q-attachment-label').textContent='Sem anexo.';
+show(1);status.textContent='Novo registro · preencha a observação e salve.';
+}
+function renderHistory(){
+const sid=$('q-history-student').value,list=$('q-history-list');list.replaceChildren();
+const moments=records.filter(r=>r.classId===activeClass&&r.subject===activeSubject&&r.studentId===sid).sort((a,b)=>a.date.localeCompare(b.date));
+const summary=$('q-moments');summary.replaceChildren();
+if(moments.length>1){
+const first=moments[0],last=moments[moments.length-1];
+summary.append(text('h3','Primeiro momento · '+first.date.split('-').reverse().join('/')),text('p',first.activity+': '+first.observation),text('h3','Momento mais recente · '+last.date.split('-').reverse().join('/')),text('p',last.activity+': '+last.observation),text('p','A comparação reúne registros do contexto selecionado. A interpretação do percurso cabe ao professor.'));
+}else summary.append(text('p',moments.length?'Há apenas um momento registrado. Novas evidências permitirão examinar o percurso.':'Ainda não há evidências registradas para comparar.'));
+$('q-course-reflection').value=courseReflections.get(contextKey()+'|'+sid)||'';
+$('q-save-reflection').disabled=!sid;
+records.filter(r=>r.classId===activeClass&&r.subject===activeSubject&&r.studentId===sid).sort((a,b)=>a.date.localeCompare(b.date)).forEach(r=>{
+const e=text('div','');e.className='event';e.append(text('strong',r.date.split('-').reverse().join('/')+' · '+r.activity),text('p',r.observation),text('p','Interpretação: '+(r.interpretation||'A elaborar')),text('p','Feedback: '+(r.feedback||'A elaborar')),text('p','Decisão: '+(r.decision||'A registrar')),button('Revisar este registro',()=>loadRecord(r.id,4)));list.append(e);
+});
+if(!list.children.length)list.append(text('p','Ainda não há registros para este aluno.'));
+const r=records.find(r=>r.id===currentId);
+$('q-decision-editor').hidden=!r||r.studentId!==sid;
+$('q-decision-context').textContent=r?r.date.split('-').reverse().join('/')+' · '+r.activity:'';
+}
+root.querySelectorAll('[role="tab"]').forEach(b=>b.addEventListener('click',()=>show(Number(b.id.split('-').pop()))));
+root.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{
+const n=Number(b.dataset.next);if([2,3,4].includes(n)&&!saveRecord())return;
+if(n===1)status.textContent='Planejamento mantido nesta demonstração. Selecione um aluno e registre uma observação.';
+show(n);
+}));
+$('q-active-school').addEventListener('change',()=>selectSchool($('q-active-school').value));
+$('q-active-class').addEventListener('change',()=>{changeClass($('q-active-class').value);show(5);});
+$('q-active-subject').addEventListener('change',()=>{changeClass(activeClass,$('q-active-subject').value);show(7);});
+root.querySelectorAll('[data-open-form]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.openForm).hidden=false));
+root.querySelectorAll('[data-close-form]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.closeForm).hidden=true));
+$('q-class-form').addEventListener('submit',e=>{e.preventDefault();const selected=[...$('q-class-subject').selectedOptions].map(o=>o.value);if(!selected.length){status.textContent='Selecione ao menos uma disciplina cadastrada.';return;}const name=$('q-class-name').value.trim(),school=$('q-class-school').value;if(!name||classes.some(c=>c.school===school&&sameName(c.name,name))){status.textContent='Informe um nome de turma ainda não cadastrado nesta escola.';return;}const id='c'+(++seq);classes.push({id,name,school,year:$('q-class-year').value.trim(),subjects:selected});$('q-class-form').reset();$('q-class-form').hidden=true;changeClass(id);status.textContent='Turma cadastrada nesta demonstração. Cadastre seus alunos.';show(6);});
+$('q-school-form').addEventListener('submit',e=>{e.preventDefault();const name=$('q-school-name').value.trim();if(!name||schools.some(s=>sameName(s,name))){status.textContent='Informe um nome de escola ainda não cadastrado.';return;}schools.push(name);$('q-school-form').reset();$('q-school-form').hidden=true;selectSchool(name);$('q-class-form').hidden=false;status.textContent='Escola cadastrada e disponível no contexto. Cadastre sua primeira turma.';});
+$('q-subject-form').addEventListener('submit',e=>{e.preventDefault();const name=$('q-subject-name').value.trim();if(!name||subjects.some(s=>sameName(s,name))){status.textContent='Informe uma disciplina ainda não cadastrada.';return;}subjects.push(name);$('q-subject-form').reset();$('q-subject-form').hidden=true;refreshContext();$('q-link-subject').value=name;status.textContent='Disciplina cadastrada. Vincule-a a uma turma para disponibilizá-la no contexto.';show(9);});
+$('q-subject-link-form').addEventListener('submit',e=>{e.preventDefault();const c=classes.find(c=>c.id===$('q-link-class').value),s=$('q-link-subject').value;if(!c||!subjects.includes(s))return;if(!c.subjects.includes(s))c.subjects.push(s);changeClass(c.id,s);show(9);status.textContent='Disciplina vinculada à turma e selecionada no contexto desta demonstração.';});
+$('q-student-form').addEventListener('submit',e=>{e.preventDefault();students.push({id:'s'+(++seq),classId:activeClass,name:$('q-student-name').value.trim(),code:$('q-student-code').value.trim()});$('q-student-form').reset();$('q-student-form').hidden=true;refreshContext();status.textContent='Aluno cadastrado nesta demonstração e disponível para novos registros.';});
+['q-filter-student','q-filter-activity','q-filter-from','q-filter-to'].forEach(id=>$(id).addEventListener('change',()=>{$('q-record-detail').hidden=true;renderRecords();}));
+$('q-history-student').addEventListener('change',renderHistory);
+$('q-new-record').addEventListener('click',()=>newRecord($('q-filter-student').value));
+$('q-history-new').addEventListener('click',()=>newRecord($('q-history-student').value));
+$('q-edit-record').addEventListener('click',()=>loadRecord(detailId));
+$('q-detail-history').addEventListener('click',()=>{const r=records.find(r=>r.id===detailId);$('q-history-student').value=r.studentId;show(4);});
+$('q-save-decision').addEventListener('click',()=>{if(saveRecord())renderHistory();});
+$('q-save-reflection').addEventListener('click',()=>{const sid=$('q-history-student').value;if(!sid)return;courseReflections.set(contextKey()+'|'+sid,$('q-course-reflection').value);status.textContent='Reflexão sobre o percurso salva nesta demonstração, vinculada ao aluno e ao contexto.';});
+$('q-record-student').addEventListener('change',()=>newRecord(selectedStudent()));
+$('q-attachment').addEventListener('change',()=>{attachmentName=$('q-attachment').files[0]?.name||'';$('q-attachment-label').textContent=attachmentName?'Arquivo selecionado apenas localmente: '+attachmentName:'Sem anexo.';});
+root.querySelectorAll('[data-ai]').forEach(b=>b.addEventListener('click',()=>{$('q-ai-'+b.dataset.ai).hidden=false;status.textContent='Exemplo predefinido sobre frações · não é uma resposta gerada por IA.';}));
+root.querySelectorAll('[data-dismiss]').forEach(b=>b.addEventListener('click',()=>{$('q-ai-'+b.dataset.dismiss).hidden=true;status.textContent='Sugestão descartada; seu texto foi preservado.';}));
+root.querySelectorAll('[data-status]').forEach(b=>b.addEventListener('click',()=>status.textContent=b.dataset.status));
+$('q-use-interpret').addEventListener('click',()=>{$('q-interpretation').value='O registro sugere comparação dos denominadores como números naturais. Preciso investigar essa hipótese com uma nova representação.';$('q-ai-interpret').hidden=true;status.textContent='Rascunho inserido para revisão docente.';});
+$('q-use-feedback').addEventListener('click',()=>{$('q-feedback').value='Você explicou sua escolha comparando os números 2 e 3. Agora desenhe dois retângulos iguais: divida um em duas partes iguais e o outro em três. Pinte uma parte de cada e compare. Sua resposta continua a mesma? Explique.';$('q-ai-feedback').hidden=true;status.textContent='Rascunho inserido; revise antes de salvar.';});
+root.querySelectorAll('button').forEach(b=>b.classList.add('cursor-interaction'));
+const savedFields=loadDemoSession();
+if(savedFields)restorePlanning();
+refreshContext();
+if(savedFields)savedFields.forEach(([id,v])=>{if($(id))$(id).value=v;});
+window.addEventListener('pagehide',saveDemoSession);
+root.querySelectorAll('a[href]').forEach(a=>a.addEventListener('click',saveDemoSession));
+const requested=sections[new URLSearchParams(window.location.search).get('secao')];
+show(Number.isInteger(requested)&&(activeClass||[5,7,8,9].includes(requested))?requested:5);
+})();
+</script>
+</div>
+
+<noscript>Ative o JavaScript para navegar pela demonstração.</noscript>
+</body></html>
